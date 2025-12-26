@@ -2,11 +2,14 @@ import { mod } from "../utils/mod.js";
 
 export class PitchClassSet {
     readonly pcs: number[];
-    readonly raw: number[];
 
     constructor(pcs: number[]) {
-        this.raw = [...pcs]
-        this.pcs = [...new Set(pcs.map(pc => mod(pc, 12)))].sort((a, b) => a - b);
+        this.pcs = PitchClassSet.normalize(pcs)
+    }
+
+    private static normalize(input: number[]): number[] {
+        return [...new Set(input.map(pc => mod(pc, 12)))]
+        .sort((a, b) => a - b);
     }
 
     tranpose(n: number): PitchClassSet {
@@ -21,7 +24,4 @@ export class PitchClassSet {
         return `( ${this.pcs.join(", ")} )`;
     }
 
-    toRaw(): string {
-        return `[${this.raw.join(", ")}]`
-    }
 }

@@ -1,8 +1,11 @@
 import { mod } from "../utils/mod.js";
 export class PitchClassSet {
     constructor(pcs) {
-        this.raw = [...pcs];
-        this.pcs = [...new Set(pcs.map(pc => mod(pc, 12)))].sort((a, b) => a - b);
+        this.pcs = PitchClassSet.normalize(pcs);
+    }
+    static normalize(input) {
+        return [...new Set(input.map(pc => mod(pc, 12)))]
+            .sort((a, b) => a - b);
     }
     tranpose(n) {
         return new PitchClassSet(this.pcs.map(pc => mod(pc + n, 12)));
@@ -12,8 +15,5 @@ export class PitchClassSet {
     }
     toString() {
         return `( ${this.pcs.join(", ")} )`;
-    }
-    toRaw() {
-        return `[${this.raw.join(", ")}]`;
     }
 }
