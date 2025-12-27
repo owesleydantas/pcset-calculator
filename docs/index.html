@@ -13,7 +13,7 @@
 
         <section class="input-section">
             <label for="pcs-input">
-                Conjunto de classes de altura
+                Digite um conjunto (separe os valores com vígula)
             </label>
             <input
                 id="pcs-input" 
@@ -29,7 +29,26 @@
 
         <section class="output-section">
             <h2>Resultado</h2>
-            <pre id="output"></pre>
+            
+            <div class="result-line">
+                <span class="label">PCS</span>
+                <span id="out-pcs"></span>
+            </div>
+
+            <div class="result-line">
+                <span class="label">Forma normal</span>
+                <span id="out-normal"></span>
+            </div>
+
+            <div class="result-line">
+                <span class="label">Forma prima</span>
+                <span id="out-prime"></span>
+            </div>
+
+            <div class="result-line">
+                <span class="label">Vetor intervalar</span>
+                <span id="out-icv"></span>
+            </div>
         </section>
     </main>
 

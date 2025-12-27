@@ -36,3 +36,14 @@ pre {
     padding: 1rem;
     overflow-x: auto;
 }
+
+.result-line {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    width: 140px;
+    font-weight: bold;
+}
