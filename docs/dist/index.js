@@ -1,11 +1,14 @@
 import { analizePitchClassSet } from "./api/analyzePitchClassSet.js";
+window.pcset = {
+    analyze: analizePitchClassSet
+};
 const input = document.getElementById("pcs-input");
 const button = document.getElementById("analyze-btn");
 const output = document.getElementById("output");
 button.addEventListener("click", () => {
     const raw = input.value;
     if (!raw.trim()) {
-        output.textContent = "Please enter a pitch class set.";
+        output.textContent = "Insira um conjuntode classes de altura.";
         return;
     }
     const values = raw
@@ -13,14 +16,15 @@ button.addEventListener("click", () => {
         .map(v => Number(v.trim()))
         .filter(v => !Number.isNaN(v));
     if (values.length === 0) {
-        output.textContent = "Invalid input.";
+        output.textContent = "Entrada inválida.";
         return;
     }
     try {
-        const result = analizePitchClassSet(values);
+        const result = window.pcset.analyze(values);
         output.textContent = JSON.stringify(result, null, 2);
     }
     catch (error) {
-        output.textContent = "Error analyzing pitch class set.";
+        output.textContent = "Erro ao analisar o conjunto.";
+        console.error(error);
     }
 });
