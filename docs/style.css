@@ -31,19 +31,65 @@ button {
     cursor: pointer;
 }
 
-pre {
-    background: #eee;
-    padding: 1rem;
-    overflow-x: auto;
+.display-panel {
+    margin-top: 1rem;
+    padding: 1.25rem 1.5rem;
+
+    background-color: #1e1e1e;
+    border-radius: 12px;
+
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.result-line {
+.display-panel .result-line {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    color: #f5f5f5;
 }
 
-.label {
-    width: 140px;
-    font-weight: bold;
+.display-panel .result-line:last-child {
+    margin-bottom: 0;
+}
+
+.display-panel span:not(.label) {
+    font-family: "Courier New", monospace;
+    font-size: 1.05rem;
+    letter-spacing: 0.0rem;
+}
+
+.display-panel .label {
+    width: 160px;
+    color: #bbbbbb;
+    font-weight: 500;
+}
+
+.keyboard-section {
+    margin-top: 2rem;
+}
+
+.pc-keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.pc-key {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #2c2c2c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.pc-key:hover {
+    transform: scale(1.05);
+}
+
+.pc-key.active {
+    background-color: #4caf50;
 }
