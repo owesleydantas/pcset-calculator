@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "ES2020",
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "docs/dist",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
