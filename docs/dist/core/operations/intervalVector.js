@@ -1,4 +1,11 @@
+// Implementação determinística para uso em análise musical computacional
 import { mod } from "../../utils/mod.js";
+/**
+ * Calcula o vetor intervalar (Interval-Class Vector) de um PCS.
+ *
+ * Formato do vetor:
+ * [1, 2, 3, 4, 5, 6]
+ */
 export function intervalVector(pcs) {
     const vector = [0, 0, 0, 0, 0, 0];
     const arr = pcs.pcs;
