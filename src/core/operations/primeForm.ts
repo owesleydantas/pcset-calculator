@@ -1,5 +1,5 @@
 import { mod } from "../../utils/mod.js";
-import { PitchClassSet } from "../PichClassSet.js";
+import { PitchClassSet } from "../PitchClassSet.js";
 import { normalOrder } from "./normalOrder.js";
 
 export function primeForm(set: PitchClassSet): number[] {

@@ -1,4 +1,4 @@
-import { PitchClassSet } from "../PichClassSet.js"
+import { PitchClassSet } from "../PitchClassSet.js"
 import { mod } from "../../utils/mod.js";
 
 export function normalOrder(set: PitchClassSet): number[] {
