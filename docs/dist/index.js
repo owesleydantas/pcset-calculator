@@ -61,7 +61,7 @@ button.addEventListener("click", () => {
         const result = analizePitchClassSet(values);
         outPCS.textContent = `{${result.pcs.join(", ")}}`;
         outNormal.textContent = `[${result.normalOrder.join(", ")}]`;
-        outPrime.textContent = `(${result.primeForm.join(", ")})`;
+        outPrime.textContent = `(${result.primeForm.join("")})`;
         outICV.textContent = `<${result.intervalVector.join(", ")}>`;
     }
     catch (error) {
