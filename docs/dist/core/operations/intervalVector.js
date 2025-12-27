@@ -1,4 +1,4 @@
-import { mod } from "../../utils/mod";
+import { mod } from "../../utils/mod.js";
 export function intervalVector(pcs) {
     const vector = [0, 0, 0, 0, 0, 0];
     const arr = pcs.pcs;

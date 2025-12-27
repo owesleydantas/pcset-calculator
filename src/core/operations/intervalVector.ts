@@ -1,5 +1,5 @@
-import { mod } from "../../utils/mod";
-import { PitchClassSet } from "../PichClassSet";
+import { mod } from "../../utils/mod.js";
+import { PitchClassSet } from "../PichClassSet.js";
 
 export function intervalVector(pcs: PitchClassSet): number[] {
     const vector = [0,0,0,0,0,0];
