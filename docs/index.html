@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pitch Class Set Calculator</title>
+    <title>PCSet Calculator</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <h1>Pitch Class Set Calculator</h1>
-    <label for="pcs-input">
-        Enter pitch classes (comma separeted):
-    </label>
+    <main class="container">
+        <h1>PCSet Calculator</h1>
 
-    <input id="pcs-input" type="text" placeholder="e.g. 0, 1, 6">
+        <section class="input-section">
+            <label for="pcs-input">
+                Conjunto de classes de altura
+            </label>
+            <input
+                id="pcs-input" 
+                type="text"
+                placeholder="Ex: 0, 1, 6"
+                autocomplete="off"
+            />
 
-    <button id="analyze-btn">
-        Analyze
-    </button>
+            <button id="analyze-btn">
+                Analisar
+            </button>
+        </section>
 
-    <pre id="output"></pre>
+        <section class="output-section">
+            <h2>Resultado</h2>
+            <pre id="output"></pre>
+        </section>
+    </main>
 
     <script type="module" src="./dist/index.js"></script>
     
