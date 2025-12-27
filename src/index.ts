@@ -1,4 +1,4 @@
-import { analizePitchClassSet } from "./api/analyzePitchClassSet";
+import { analizePitchClassSet } from "./api/analyzePitchClassSet.js";
 
 const input = document.getElementById("pcs-input") as HTMLInputElement;
 const button = document.getElementById("analyze-btn") as HTMLButtonElement;
