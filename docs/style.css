@@ -6,11 +6,11 @@ body {
 }
 
 .container {
-    max-width: 640px;
-    margin: 2rem auto;
+    width: min(100%, 720px);
+    margin: 2.5rem auto;
     background: #ffffff;
     padding: 2rem;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .input-section {
@@ -23,6 +23,28 @@ input {
     flex: 1;
     padding: 0.5rem;
     font-size: 1rem;
+}
+
+.controls-row {
+    font-size: 1.05rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+
+    max-width: 720px;
+    margin: 1.5rem;
+}
+
+.trnspose-control{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+#transpose-select {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.95rem;
 }
 
 button {
@@ -101,5 +123,73 @@ button {
 }
 
 .hidden {
-    display: None;
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .controls-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #clear-btn,
+    #transpose-select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .display-panel .result-line {
+        flex-direction: column;
+        align-self: flex-start;
+        gap: 0.2rem;
+    }
+
+    .display-panel .label {
+        width: auto;
+        font-size: 0.8rem;
+    }
+
+    .display-panel span:not(.label) {
+        font-size: 1rem;
+    }
+
+    .input-section {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    input,
+    button,
+    select {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .pc-keyboard {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .pc-key {
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .transpose-indicator {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .pc-keyboard {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
