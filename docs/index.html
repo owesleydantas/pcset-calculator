@@ -12,29 +12,39 @@
         <h1>PCSet Calculator</h1>
 
         <section class="input-section">
-            <label for="pcs-input">
-                Digite um conjunto (separe os valores com vígula)
-            </label>
             <input
                 id="pcs-input" 
                 type="text"
                 placeholder="Ex: 0, 1, 6"
-                autocomplete="off"
+                autocomplete="off",
+                disabled
             />
-
-            <button id="analyze-btn">
-                Analisar
-            </button>
         </section>
 
         <section class="keyboard-section">
             <h3>Teclado de classes de altura</h3>
-
+            
             <div id="pc-keyboard" class="pc-keyboard">
-
+                
             </div>
             <button id="clear-btn">Limpar</button>
         </section>
+
+        <label for="transpose-select">Transposição</label>
+        <select id="transpose-select">
+            <option value="0">T0 (original)</option>
+            <option value="1">T1</option>
+            <option value="2">T2</option>
+            <option value="3">T3</option>
+            <option value="4">T4</option>
+            <option value="5">T5</option>
+            <option value="6">T6</option>
+            <option value="7">T7</option>
+            <option value="8">T8</option>
+            <option value="9">T9</option>
+            <option value="10">T10</option>
+            <option value="11">T11</option>  
+        </select>
 
         <section class="output-section">
             <h2>Resultado</h2>
@@ -42,13 +52,16 @@
             <div class="display-panel">
 
                 <div class="result-line">
-                    <span class="label">PCS</span>
+                    <span class="label">Original</span>
                     <span id="out-pcs">{ 0 }</span>
                 </div>
     
                 <div class="result-line">
                     <span class="label">Forma normal</span>
                     <span id="out-normal">[ 0 ]</span>
+                    <span id="transpose-indicator" class="transpose-indicator hidden">
+                        T0
+                    </span>
                 </div>
     
                 <div class="result-line">
