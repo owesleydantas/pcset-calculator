@@ -126,6 +126,22 @@ button {
     display: none;
 }
 
+.footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #555555;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: #000;
+}
+
 @media (max-width: 480px) {
     .controls-row {
         flex-direction: column;
