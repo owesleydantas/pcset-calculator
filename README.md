@@ -8,10 +8,9 @@
 - Normalização de PCS
 - Forma normal  (Normal Order)
 - Forma prima (Prime Form)
-- Vetor Classe Intervalar
+- Vetor Classe Intervalar (ICV)
 - Transposição (Tn)
+- Inversão (TnI)
 
-## Uso no navegador
-
-```js
-pcset.analyze([0, 1, 6])
+### 🚩 Última atualização
+* `05/01/2026`
