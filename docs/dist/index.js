@@ -1,15 +1,17 @@
 import { analizePitchClassSet } from "./api/analyzePitchClassSet.js";
-import { mod } from "./utils/mod.js";
-const input = document.getElementById("pcs-input");
+import { PitchClassSet } from "./core/PitchClassSet.js";
 const transposeSelect = document.getElementById("transpose-select");
+const invertSelect = document.getElementById("invert-select");
+const outTransposition = document.getElementById("out-transposition");
+const outInversion = document.getElementById("out-invertion");
 let transposition = 0;
-const outPCS = document.getElementById("out-pcs");
+let invertion = 0;
+const outPCS = document.getElementById("out-pcs-original");
 const outNormal = document.getElementById("out-normal");
 const outPrime = document.getElementById("out-prime");
 const outICV = document.getElementById("out-icv");
 const keyboard = document.getElementById("pc-keyboard");
 const clearBtn = document.getElementById("clear-btn");
-const transoseIndicator = document.getElementById("transpose-indicator");
 let selectedPCs = [];
 for (let pc = 0; pc < 12; pc++) {
     const btn = document.createElement("button");
@@ -25,40 +27,51 @@ for (let pc = 0; pc < 12; pc++) {
             selectedPCs.push(pc);
             btn.classList.add("active");
         }
-        syncInput();
         analyzeAndRender();
     });
     keyboard.appendChild(btn);
 }
-function syncInput() {
-    input.value = selectedPCs.join(", ");
+function getActiveSet() {
+    return new PitchClassSet(selectedPCs)
+        .transpose(transposition)
+        .invert(invertion)
+        .pcs;
 }
-function getTransposedSet() {
-    return selectedPCs.map(pc => mod(pc + transposition, 12));
+function resetOutput() {
+    outPCS.textContent = `[ 0 ]`;
+    outTransposition.textContent = `[ 0 ]`;
+    outInversion.textContent = `[ 0 ]`;
+    outNormal.textContent = `[ 0 ]`;
+    outPrime.textContent = `( 0 )`;
+    outICV.textContent = `< 0 >`;
+}
+function getTranspositionSet() {
+    const transposed = new PitchClassSet(selectedPCs).transpose(transposition);
+    return transposed.toString();
+}
+function getOutNormalOrder() {
+    const normal = analizePitchClassSet(new PitchClassSet(selectedPCs).pcs);
+    return `[${normal.normalOrder.join(", ")}]`;
+}
+function getInversionSet() {
+    const inverted = new PitchClassSet(selectedPCs).invert(invertion);
+    const invertedNormal = analizePitchClassSet(inverted.pcs);
+    return `[${invertedNormal.normalOrder.join(", ")}]`;
 }
 function analyzeAndRender() {
     if (selectedPCs.length === 0) {
-        outPCS.textContent = `[ 0 ]`;
-        outNormal.textContent = `[ 0 ]`;
-        outPrime.textContent = `( 0 )`;
-        outICV.textContent = `< 0 >`;
-        transoseIndicator.classList.add("hidden");
+        resetOutput();
         return;
     }
     try {
-        const transposed = getTransposedSet();
-        const result = analizePitchClassSet(transposed);
+        const activeSet = getActiveSet();
+        const result = analizePitchClassSet(activeSet);
         outPCS.textContent = `[${selectedPCs.join(", ")}]`;
-        outNormal.textContent = `[${result.normalOrder.join(", ")}]`;
+        outTransposition.textContent = getTranspositionSet();
+        outInversion.textContent = getInversionSet();
+        outNormal.textContent = getOutNormalOrder();
         outPrime.textContent = `(${result.primeForm.join("")})`;
         outICV.textContent = `<${result.intervalVector.join(", ")}>`;
-        if (transposition === 0) {
-            transoseIndicator.classList.add("hidden");
-        }
-        else {
-            transoseIndicator.textContent = `T${transposition}`;
-            transoseIndicator.classList.remove("hidden");
-        }
     }
     catch (error) {
         alert("Erro ao analisar o conjunto.");
@@ -67,9 +80,9 @@ function analyzeAndRender() {
 }
 clearBtn.addEventListener("click", () => {
     selectedPCs = [];
-    input.value = "";
     transposition = 0;
     transposeSelect.value = "0";
+    invertSelect.value = "0";
     outPCS.textContent = `{ 0 }`;
     outNormal.textContent = `[ 0 ]`;
     outPrime.textContent = `( 0 )`;
@@ -81,5 +94,9 @@ clearBtn.addEventListener("click", () => {
 });
 transposeSelect.addEventListener("change", () => {
     transposition = Number(transposeSelect.value);
+    analyzeAndRender();
+});
+invertSelect.addEventListener("change", () => {
+    invertion = Number(invertSelect.value);
     analyzeAndRender();
 });

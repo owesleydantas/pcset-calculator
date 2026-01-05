@@ -24,7 +24,7 @@ export class PitchClassSet {
     }
 
     /** Transpõe o conjunto por n semintons */
-    tranpose(n: number): PitchClassSet {
+    transpose(n: number): PitchClassSet {
         return new PitchClassSet(this.pcs.map(pc => mod(pc + n, 12)));
     }
 
@@ -34,7 +34,7 @@ export class PitchClassSet {
     }
 
     toString(): string {
-        return `( ${this.pcs.join(", ")} )`;
+        return `[${this.pcs.join(", ")}]`;
     }
 
 }

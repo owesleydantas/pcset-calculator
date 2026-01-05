@@ -17,7 +17,7 @@ export class PitchClassSet {
             .sort((a, b) => a - b);
     }
     /** Transpõe o conjunto por n semintons */
-    tranpose(n) {
+    transpose(n) {
         return new PitchClassSet(this.pcs.map(pc => mod(pc + n, 12)));
     }
     /** Inverte o conjunto em torno de um eixo (padrão = 0) */
@@ -25,6 +25,6 @@ export class PitchClassSet {
         return new PitchClassSet(this.pcs.map(pc => mod(axis - pc, 12)));
     }
     toString() {
-        return `( ${this.pcs.join(", ")} )`;
+        return `[${this.pcs.join(", ")}]`;
     }
 }

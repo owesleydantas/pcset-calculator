@@ -11,16 +11,6 @@
     <main class="container">
         <h1>Calculadora PCS</h1>
 
-        <section class="input-section">
-            <input
-                id="pcs-input" 
-                type="text"
-                placeholder="Ex: 0, 1, 6"
-                autocomplete="off",
-                disabled
-            />
-        </section>
-
         <section class="keyboard-section">
             <h3>Teclado de classes de altura</h3>
             
@@ -30,7 +20,7 @@
         </section>
         <section class="controls-row">
             <div class="transpose-control">
-                <label for="transpose-select">Transposição</label>
+                <label for="transpose-select">Transposição Tn</label>
                 <select id="transpose-select">
                     <option value="0">T0 (original)</option>
                     <option value="1">T1</option>
@@ -46,6 +36,24 @@
                     <option value="11">T11</option>  
                 </select>
             </div>
+
+            <div class="invert-control">
+                <label for="invert-control">Inversão TnI</label>
+                <select id="invert-select">
+                    <option value="0">T0I (original)</option>
+                    <option value="1">T1I</option>
+                    <option value="2">T2I</option>
+                    <option value="3">T3I</option>
+                    <option value="4">T4I</option>
+                    <option value="5">T5I</option>
+                    <option value="6">T6I</option>
+                    <option value="7">T7I</option>
+                    <option value="8">T8I</option>
+                    <option value="9">T9I</option>
+                    <option value="10">T10I</option>
+                    <option value="11">T11I</option>
+                </select>
+            </div>
             
             <button id="clear-btn">Limpar</button>
         </section>
@@ -55,28 +63,47 @@
 
             <div class="display-panel">
 
-                <div class="result-line">
-                    <span class="label">Original</span>
-                    <span id="out-pcs">{ 0 }</span>
+                <!-- BLOCO 1: ESTADO -->
+                <div class="result-group">
+                    <h3>Conjunto</h3>
+
+                    <div class="result-line">
+                        <span class="label">Original</span>
+                        <span class="set" id="out-pcs-original">{ 0 }</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span class="label">Transposição Tn</span>
+                        <span class="set" id="out-transposition">[ 0 ]</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span class="label">Inversão TnI</span>
+                        <span class="set" id="out-invertion">[ 0 ]</span>
+
+                    </div>
                 </div>
-    
-                <div class="result-line">
-                    <span class="label">Forma normal</span>
-                    <span id="out-normal">[ 0 ]</span>
-                    <span id="transpose-indicator" class="transpose-indicator hidden">
-                        T0
-                    </span>
+
+                <!-- BLOCO 2: ANÁLISE -->
+                <div class="result-group">
+                    <h3>Análise estrutural</h3>
+
+                    <div class="result-line">
+                        <span class="label">Forma normal</span>
+                        <span class="set" id="out-normal">[ 0 ]</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span class="label">Forma prima</span>
+                        <span class="set" id="out-prime">( 0 )</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span class="label">Vetor intervalar</span>
+                        <span class="set" id="out-icv">&lt; 0 &gt;</span>
+                    </div>
                 </div>
-    
-                <div class="result-line">
-                    <span class="label">Forma prima</span>
-                    <span id="out-prime">( 0 )</span>
-                </div>
-    
-                <div class="result-line">
-                    <span class="label">Vetor intervalar</span>
-                    <span id="out-icv">( 0 )</span>
-                </div>
+
             </div>
         </section>
 
