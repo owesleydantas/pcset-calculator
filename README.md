@@ -1,4 +1,4 @@
-# PCSet Calculator
+# Calculadora PCS
 
 Biblioteca para análise de conjuntos de classes de altura (Pitch Class Set) em JavaScript/TypeScript, executando diretamente no navegador.
 
@@ -7,6 +7,7 @@ Biblioteca para análise de conjuntos de classes de altura (Pitch Class Set) em 
 - Forma normal  (Normal Order)
 - Forma prima (Prime Form)
 - Vetor Classe Intervalar
+- Transposição (Tn)
 
 ## Uso no navegador
 
